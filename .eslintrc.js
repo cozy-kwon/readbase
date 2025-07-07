@@ -16,6 +16,8 @@ module.exports = {
     'eol-last': 'warn',
     'quotes': ['error', 'single', { avoidEscape: true }],
     'jsx-quotes': ['error', 'prefer-double'],
+    'no-extra-semi': 'warn',
+    'comma-dangle': ['warn', 'always-multiline'],
   },
   settings: {
     react: {
