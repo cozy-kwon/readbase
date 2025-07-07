@@ -14,6 +14,8 @@ module.exports = {
     'no-console': 'warn',
     'no-debugger': 'warn',
     'eol-last': 'warn',
+    'quotes': ['error', 'single', { avoidEscape: true }],
+    'jsx-quotes': ['error', 'prefer-double'],
   },
   settings: {
     react: {
