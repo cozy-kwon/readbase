@@ -18,6 +18,12 @@ module.exports = {
     'jsx-quotes': ['error', 'prefer-double'],
     'no-extra-semi': 'warn',
     'comma-dangle': ['warn', 'always-multiline'],
+    'indent': ['warn', 2, { SwitchCase: 1 }],
+    'react/jsx-curly-spacing': ['error', {
+      when: 'never',
+      attributes: { allowMultiline: false },
+      children: { when: 'always' },
+    }],
   },
   settings: {
     react: {
