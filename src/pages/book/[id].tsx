@@ -8,12 +8,12 @@ import { useStep } from '@/hooks';
 export default function BookFormPage() {
   const router = useRouter();
   const idFromQuery = router.query.id as string;
-  const { step, goToStep, isReady } = useStep({
+  const { step, goToStep } = useStep({
     pathname: `/book/${idFromQuery}`,
     totalSteps: READING_TOTAL_STEPS,
   });
 
-  if (!isReady) {
+  if (step == null) {
     return null;
   }
 

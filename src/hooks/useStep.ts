@@ -6,13 +6,8 @@ export interface UseStepProps {
   totalSteps: number;
 }
 
-export type UseStepResult = {
-  isReady: false;
-  step: null;
-  goToStep: () => void;
-} | {
-  isReady: true;
-  step: number;
+export interface UseStepResult {
+  step: number | null;
   goToStep: (newStep: number) => void;
 }
 
@@ -61,7 +56,6 @@ export function useStep({ pathname, totalSteps }: UseStepProps): UseStepResult {
 
   if (step == null) {
     return {
-      isReady: false,
       step: null,
       goToStep: () => {
         /* noop */
@@ -71,7 +65,6 @@ export function useStep({ pathname, totalSteps }: UseStepProps): UseStepResult {
 
   return {
     step,
-    isReady: true,
     goToStep,
   };
 }
