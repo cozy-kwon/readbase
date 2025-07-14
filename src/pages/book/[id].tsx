@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-import { Layout, Content } from '@/components';
+import { Layout, BookFormContent } from '@/components';
 import { READING_TOTAL_STEPS } from '@/constants';
 import { useBook, useStep } from '@/hooks';
 
@@ -16,7 +16,7 @@ export default function BookFormPage() {
 
   return (
     <Layout>
-      <Content
+      <BookFormContent
         step={step}
         book={bookData}
         isLoading={isLoading}
