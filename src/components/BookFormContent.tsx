@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
 import { READING_TOTAL_STEPS } from '@/constants';
-import { Button, Stepper } from '@/components';
 import { useBook } from '@/hooks';
+import { BookSummary, Button, Stepper } from '@/components';
 
 export interface BookFormContentProps {
   id: number;
@@ -18,7 +18,7 @@ export function BookFormContent({
   const { book } = useBook(id);
   return (
     <Wrapper>
-      <Title>{ book.title }</Title>
+      <BookSummary book={book} />
       <Stepper currentStep={step} totalSteps={READING_TOTAL_STEPS} />
       <Form>
         폼 영역
@@ -40,12 +40,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-`;
-
-const Title = styled.h1`
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
 `;
 
 const Form = styled.form`
