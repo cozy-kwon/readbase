@@ -8,12 +8,14 @@ export const mockBooks: Book[] = [
     title: '스토너',
     author: '존 윌리엄스, 김승욱',
     totalPages: 396,
+    publishedAt: new Date('2015-01-02'),
   },
   {
     id: 2,
     title: '원씽 The One Thing',
     author: '게리 켈러, 제이 파파산, 구세희',
     totalPages: 280,
+    publishedAt: new Date('2013-08-30'),
   },
 ];
 

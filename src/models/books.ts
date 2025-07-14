@@ -18,6 +18,8 @@ export interface Book {
   author: string;
   /** 총 페이지수 */
   totalPages: number;
+  /** 도서 출판일 */
+  publishedAt: Date;
 }
 
 export interface Reading extends Book {
