@@ -4,17 +4,19 @@ import { READING_TOTAL_STEPS } from '@/constants';
 import { Book } from '@/models';
 import { Button, Stepper } from '@/components';
 
-export function Content({
-  step,
-  book,
-  isLoading,
-  goToStep,
-}: {
+export interface BookFormContentProps {
   step: number | null;
   book: Book | undefined;
   isLoading: boolean;
   goToStep: (step: number) => void;
-}) {
+}
+
+export function BookFormContent({
+  step,
+  book,
+  isLoading,
+  goToStep,
+}: BookFormContentProps) {
   if (step == null || isLoading) {
     return <Warning>Loading...</Warning>;
   }

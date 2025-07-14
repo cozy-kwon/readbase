@@ -1,4 +1,4 @@
 export * from './Button';
-export * from './Content';
+export * from './BookFormContent';
 export * from './Layout';
 export * from './Stepper';
