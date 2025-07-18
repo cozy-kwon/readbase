@@ -18,13 +18,13 @@ export function useStep({ pathname, totalSteps }: UseStepProps): UseStepResult {
   useEffect(() => {
     if (!router.isReady) return;
 
-    const stepParam = router.query.step as string | undefined;
-    const stepFromQuery = Number.parseInt(stepParam ?? '');
+    const stepParam = router.query.step;
+    const parsedStep = Number(stepParam ?? '');
 
     const isValid =
-      !Number.isNaN(stepFromQuery) &&
-      stepFromQuery >= 1 &&
-      stepFromQuery <= totalSteps;
+      !Number.isNaN(parsedStep) &&
+      parsedStep >= 1 &&
+      parsedStep <= totalSteps;
 
     if (!isValid) {
       router.replace(
@@ -38,7 +38,7 @@ export function useStep({ pathname, totalSteps }: UseStepProps): UseStepResult {
       return;
     }
 
-    setStep(stepFromQuery);
+    setStep(parsedStep);
   }, [pathname, router, totalSteps]);
 
   const goToStep = (newStep: number) => {
@@ -53,15 +53,6 @@ export function useStep({ pathname, totalSteps }: UseStepProps): UseStepResult {
       { shallow: true }
     );
   };
-
-  if (step == null) {
-    return {
-      step: null,
-      goToStep: () => {
-        /* noop */
-      },
-    };
-  }
 
   return {
     step,
