@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 
 import { READING_TOTAL_STEPS } from '@/constants';
-import { Button, Loading, Stepper } from '@/components';
+import { Button, Stepper } from '@/components';
 import { useBook } from '@/hooks';
 
 export interface BookFormContentProps {
   id: number;
-  step: number | null;
+  step: number;
   goToStep: (step: number) => void;
 }
 
@@ -16,9 +16,6 @@ export function BookFormContent({
   goToStep,
 }: BookFormContentProps) {
   const { book } = useBook(id);
-  if (step == null) {
-    return <Loading />
-  }
   return (
     <Wrapper>
       <Title>{ book.title }</Title>

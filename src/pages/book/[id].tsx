@@ -17,11 +17,13 @@ export default function BookFormPage() {
   }
   return (
     <Layout>
-      <BookFormContent
-        id={Number(idFromQuery)}
-        step={step}
-        goToStep={goToStep}
-      />
+      { step != null && (
+        <BookFormContent
+          id={Number(idFromQuery)}
+          step={step}
+          goToStep={goToStep}
+        />
+      ) }
     </Layout>
   );
 }
