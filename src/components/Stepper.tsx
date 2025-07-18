@@ -1,4 +1,3 @@
-import { ReactElement } from 'react';
 import styled from '@emotion/styled';
 
 export interface StepperProps {
@@ -6,7 +5,7 @@ export interface StepperProps {
   totalSteps: number;
 }
 
-export function Stepper({ currentStep, totalSteps }: StepperProps): ReactElement {
+export function Stepper({ currentStep, totalSteps }: StepperProps) {
   return (
     <Wrapper>
       { Array.from({ length: totalSteps }).map((_, index) => {
