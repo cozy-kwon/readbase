@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 
 import { Layout, BookFormContent } from '@/components';
 import { READING_TOTAL_STEPS } from '@/constants';
-import { useBook, useStep } from '@/hooks';
+import { useStep } from '@/hooks';
 
 export default function BookFormPage() {
   const router = useRouter();
@@ -12,14 +12,14 @@ export default function BookFormPage() {
     totalSteps: READING_TOTAL_STEPS,
   });
 
-  const { data: bookData, isLoading } = useBook(Number(idFromQuery));
-
+  if (idFromQuery == null) {
+    return null;
+  }
   return (
     <Layout>
       <BookFormContent
+        id={Number(idFromQuery)}
         step={step}
-        book={bookData}
-        isLoading={isLoading}
         goToStep={goToStep}
       />
     </Layout>

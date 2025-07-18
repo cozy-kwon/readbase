@@ -1,30 +1,24 @@
 import styled from '@emotion/styled';
 
 import { READING_TOTAL_STEPS } from '@/constants';
-import { Book } from '@/models';
-import { Button, Stepper } from '@/components';
+import { Button, Loading, Stepper } from '@/components';
+import { useBook } from '@/hooks';
 
 export interface BookFormContentProps {
+  id: number;
   step: number | null;
-  book: Book | undefined;
-  isLoading: boolean;
   goToStep: (step: number) => void;
 }
 
 export function BookFormContent({
+  id,
   step,
-  book,
-  isLoading,
   goToStep,
 }: BookFormContentProps) {
-  if (step == null || isLoading) {
-    return <Warning>Loading...</Warning>;
+  const { book } = useBook(id);
+  if (step == null) {
+    return <Loading />
   }
-
-  if (!book) {
-    return <Warning>책 정보를 불러올 수 없습니다.</Warning>;
-  }
-
   return (
     <Wrapper>
       <Title>{ book.title }</Title>
@@ -72,11 +66,4 @@ const StepNavigation = styled.div`
   padding-top: 24px;
   border-top: 1px solid #eee;
   width: 100%;
-`;
-
-const Warning = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 240px;
 `;
