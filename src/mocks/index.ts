@@ -1,7 +1,7 @@
 import { worker } from './browser';
 
 if (typeof window !== 'undefined') {
-  worker.start({
+  worker?.start({
     onUnhandledRequest: 'bypass',
   });
 }
