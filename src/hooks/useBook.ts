@@ -11,5 +11,5 @@ export function useBook(id: number) {
   return {
     book: data,
     ...rest,
-  }
+  };
 }
