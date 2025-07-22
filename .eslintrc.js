@@ -24,6 +24,7 @@ module.exports = {
       attributes: { allowMultiline: false },
       children: { when: 'always' },
     }],
+    'semi': ['warn', 'always'],
   },
   settings: {
     react: {
