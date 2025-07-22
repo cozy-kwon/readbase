@@ -9,6 +9,13 @@ export enum ReadingStatus {
   Hold = 'HOLD',
 }
 
+export const ReadingStatusLabelMap: Record<ReadingStatus, string> = {
+  [ReadingStatus.WantToRead]: '읽고 싶은 책',
+  [ReadingStatus.Reading]: '읽는 중',
+  [ReadingStatus.Finished]: '읽음',
+  [ReadingStatus.Hold]: '보류 중',
+};
+
 export interface Book {
   /** ID */
   id: number;
