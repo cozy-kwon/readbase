@@ -1,10 +1,10 @@
 import { http, HttpResponse } from 'msw';
 
-import { Reading } from '@/models';
+import { ReadingForm } from '@/form';
 
 export const readingHandlers = [
   http.post('/reading', async ({ request }) => {
-    const data = await request.json() as Reading;
+    const data = await request.json() as ReadingForm;
 
     // TODO: 최소한의 서버 에러 처리?
 

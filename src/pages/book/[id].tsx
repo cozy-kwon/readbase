@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router';
 
-import { Layout, BookFormContent } from '@/components';
+import { Layout } from '@/components';
 import { READING_TOTAL_STEPS } from '@/constants';
 import { useStep } from '@/hooks';
+import { BookFormContent } from '@/form';
 
 export default function BookFormPage() {
   const router = useRouter();
