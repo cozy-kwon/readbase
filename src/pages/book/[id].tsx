@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-import { Layout } from '@/components';
+import { Layout, MobileNotice } from '@/components';
 import { READING_TOTAL_STEPS } from '@/constants';
 import { useStep } from '@/hooks';
 import { BookFormContent } from '@/form';
@@ -18,6 +18,7 @@ export default function BookFormPage() {
   }
   return (
     <Layout>
+      <MobileNotice />
       { step != null && (
         <BookFormContent
           id={Number(idFromQuery)}
