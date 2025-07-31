@@ -1,7 +1,12 @@
 import { z } from 'zod';
 
 import { ReadingStatus } from '@/models';
-import { step1Validation, StepKey } from '@/form';
+import {
+  step1Validation,
+  step3Validation,
+  step4Validation,
+  StepKey,
+} from '@/form';
 
 export const ReadingSchema = z.object({
   id: z.number(),
@@ -15,10 +20,14 @@ export const ReadingSchema = z.object({
   isRecommended: z.boolean(),
   rating: z.number().min(0).max(5),
   review: z.string().optional(),
-  quotePageNumbers: z.array(z.number().int().positive().min(1)).optional(),
+  quotePageNumbers: z.array(z.object({
+    pageNumber: z.number().optional(),
+  })),
   isPublic: z.boolean(),
 }).superRefine((value, ctx) => {
   step1Validation(value, ctx);
+  step3Validation(value, ctx);
+  step4Validation(value, ctx);
 });
 
 export type ReadingForm = z.infer<typeof ReadingSchema>;

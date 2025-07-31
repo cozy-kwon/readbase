@@ -1,26 +1,26 @@
-import { forwardRef, TextareaHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 
-export interface TextareaFieldProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface NumberInputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   hint?: string;
   error?: string;
 }
 
-function TextareaFieldImpl(
-  { label, hint, error, ...props }: TextareaFieldProps,
-  ref: React.Ref<HTMLTextAreaElement>
+function NumberInputFieldImpl(
+  { label, hint, error, ...props }: NumberInputFieldProps,
+  ref: React.Ref<HTMLInputElement>
 ) {
   return (
     <Wrapper>
       { label && <Label>{ label }</Label> }
-      <Textarea ref={ref} {...props} hasError={!!error} />
+      <NumberInput ref={ref} type="number" {...props} hasError={!!error} />
       <Hint isError={!!error}>{ error || hint }</Hint>
     </Wrapper>
   );
 }
 
-export const TextareaField = forwardRef(TextareaFieldImpl);
+export const NumberInputField = forwardRef(NumberInputFieldImpl);
 
 const Wrapper = styled.div`
   display: flex;
@@ -38,11 +38,19 @@ const Hint = styled.span<{ isError: boolean }>`
   color: ${({ isError }) => (isError ? '#f44' : '#888')};
 `;
 
-const Textarea = styled.textarea<{ hasError?: boolean }>`
+const NumberInput = styled.input<{ hasError?: boolean }>`
   padding: 8px 12px;
   border: 1px solid ${({ hasError }) => (hasError ? '#f44' : '#ccc')};
   border-radius: 4px;
   font-size: 14px;
-  min-height: 120px;
-  resize: vertical;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type=number] {
+    appearance: textfield;
+  }
 `;

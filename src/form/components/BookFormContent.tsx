@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { FormProvider, Resolver, useForm } from 'react-hook-form';
 import styled from '@emotion/styled';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -54,6 +55,11 @@ export function BookFormContent({
   });
 
   const CurrentStepComponent = STEP_COMPONENTS[step];
+
+  useEffect(() => {
+    // step이 바뀔 때마다 전체 validation 실행
+    form.trigger();
+  }, [step, form]);
 
   return (
     <FormProvider {...form}>
