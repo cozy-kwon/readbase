@@ -1,7 +1,11 @@
 import { z } from 'zod';
 
 import { ReadingStatus } from '@/models';
-import { step1Validation, StepKey } from '@/form';
+import {
+  step1Validation,
+  step3Validation,
+  StepKey,
+} from '@/form';
 
 export const ReadingSchema = z.object({
   id: z.number(),
@@ -19,6 +23,7 @@ export const ReadingSchema = z.object({
   isPublic: z.boolean(),
 }).superRefine((value, ctx) => {
   step1Validation(value, ctx);
+  step3Validation(value, ctx);
 });
 
 export type ReadingForm = z.infer<typeof ReadingSchema>;
