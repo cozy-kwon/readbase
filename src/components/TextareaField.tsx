@@ -26,6 +26,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 6px;
+  min-width: 360px;
 `;
 
 const Label = styled.label`
